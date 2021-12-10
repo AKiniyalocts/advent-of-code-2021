@@ -12,11 +12,13 @@ private fun PartOne(){
 
     val mapped = mutableListOf<MutableList<String>>()
 
-    data.forEachIndexed { index, value ->
-        val indexList = mapped.getOrNull(index) ?: mutableListOf()
 
-        value.forEach {
-            indexList.add(value)
+    data.forEachIndexed { index, value ->
+        val indexList = mutableListOf<String>()
+
+        value.forEachIndexed { index, char ->
+            val row = mapped.getOrElse(index){ mutableListOf()}
+            row.add(char.toString())
         }
     }
     print(data)
